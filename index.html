@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Псалтырь — Православное приложение для чтения и изучения Псалтыри</title>
+    <meta name="description" content="Православная Псалтырь для Android — 151 псалом в 5 переводах, толкования, аудио, подборки псалмов, правило чтения и поминовения.">
+    <link rel="icon" type="image/png" href="icon.png">
+    <style>
+        :root {
+            --bg: #faf8f5;
+            --text: #2c2416;
+            --accent: #8b6914;
+            --accent-light: #c9a84c;
+            --card-bg: #ffffff;
+            --card-shadow: rgba(139, 105, 20, 0.08);
+            --section-bg: #f3efe8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, #f3efe8 0%, var(--bg) 100%);
+        }
+
+        .hero-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 24px;
+            box-shadow: 0 8px 32px rgba(139, 105, 20, 0.15);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.15rem;
+            color: #6b5c3e;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 36px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.1s;
+            box-shadow: 0 4px 16px rgba(139, 105, 20, 0.25);
+        }
+
+        .download-btn:hover {
+            background: #a07a18;
+            transform: translateY(-1px);
+        }
+
+        .download-btn svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .version-info {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #9a8b6e;
+        }
+
+        /* Features */
+        .features {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 32px;
+            color: var(--text);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 2px 12px var(--card-shadow);
+        }
+
+        .feature-card h3 {
+            font-size: 1.05rem;
+            margin-bottom: 6px;
+            color: var(--accent);
+        }
+
+        .feature-card p {
+            font-size: 0.92rem;
+            color: #5c4e36;
+        }
+
+        /* Screenshots */
+        .screenshots-section {
+            background: var(--section-bg);
+            padding: 50px 20px;
+        }
+
+        .screenshots-section h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 32px;
+        }
+
+        .screenshots {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 0 20px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .screenshots::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .screenshots::-webkit-scrollbar-thumb {
+            background: var(--accent-light);
+            border-radius: 3px;
+        }
+
+        .screenshot-item {
+            flex: 0 0 auto;
+            scroll-snap-align: center;
+            text-align: center;
+        }
+
+        .screenshot-item img {
+            width: 240px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .screenshot-item .caption {
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: #6b5c3e;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #9a8b6e;
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .screenshot-item img {
+                width: 200px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <img src="icon.png" alt="Псалтырь" class="hero-icon">
+    <h1>Псалтырь</h1>
+    <p class="subtitle">
+        Православное приложение для келейного чтения, изучения и слушания Псалтыри.
+        151 псалом в 5 переводах, святоотеческое изъяснение, толкования 78+ авторов, аудио и правило чтения.
+    </p>
+    <a href="https://github.com/kostya29/Psaltir/releases/latest/download/slovo-release.apk" class="download-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 20h14v-2H5v2zm7-18L5.33 8.67l1.41 1.41L11 5.83V16h2V5.83l4.26 4.25 1.41-1.41L12 2z" transform="rotate(180 12 12)"/></svg>
+        Скачать APK
+    </a>
+    <p class="version-info">Версия 1.52.0 &middot; Android 8.0+</p>
+</section>
+
+<section class="features">
+    <h2>Возможности</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>5 переводов</h3>
+            <p>Церковнославянский, Синодальный, Юнгеров, Аверинцев и Десницкий. Сравнение переводов бок о бок.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Толкования</h3>
+            <p>Святоотеческое изъяснение каждого псалма и толкования от 78+ авторов — от древних отцов до современных богословов.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Аудио</h3>
+            <p>Слушание псалмов с синхронизацией текста. Мини-плеер для фонового прослушивания.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Правило чтения</h3>
+            <p>Расписание чтения Псалтыри с настройкой начальной и конечной даты. Автоматическое отслеживание прогресса.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Подборки псалмов</h3>
+            <p>Готовые и пользовательские подборки псалмов по темам — утешение, благодарение, покаяние и другие.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Закладки и заметки</h3>
+            <p>Сохранение любимых стихов и ведение личных заметок к каждому псалму.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Поминовение</h3>
+            <p>Синодики для поминовения о здравии и о упокоении при чтении Псалтыри.</p>
+        </div>
+        <div class="feature-card">
+            <h3>Настройки</h3>
+            <p>Тёмная тема, настройка шрифта, молитвенное правило перед и после кафизмы.</p>
+        </div>
+    </div>
+</section>
+
+<section class="screenshots-section">
+    <h2>Скриншоты</h2>
+    <div class="screenshots">
+        <div class="screenshot-item">
+            <img src="screenshots/01_home.png" alt="Главный экран" loading="lazy">
+            <div class="caption">Главный экран</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="screenshots/02_reader.png" alt="Чтение псалмов" loading="lazy">
+            <div class="caption">Чтение псалмов</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="screenshots/03_audio.png" alt="Аудио плеер" loading="lazy">
+            <div class="caption">Аудио плеер</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="screenshots/04_commentaries.png" alt="Толкования" loading="lazy">
+            <div class="caption">Толкования</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="screenshots/05_translations.png" alt="Сравнение переводов" loading="lazy">
+            <div class="caption">Сравнение переводов</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="screenshots/06_collections.png" alt="Подборки" loading="lazy">
+            <div class="caption">Подборки</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="screenshots/07_dark.png" alt="Тёмная тема" loading="lazy">
+            <div class="caption">Тёмная тема</div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024&ndash;2026 Псалтырь &middot; <a href="https://github.com/kostya29/Psaltir/releases">Все версии</a></p>
+</footer>
+
+</body>
+</html>
